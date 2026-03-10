@@ -12,17 +12,17 @@ export const useFavoriteStore = create<FavoritesState>((set, get) => ({
   favorites: [],
   addFavorite: (coin) => {
     const current = get().favorites;
-    if (!current.some((f) => f.name === coin.name)) {
+    if (!current.some((f) => f.id === coin.id)) {
       set({ favorites: [...current, coin] });
     }
   },
   removeFavorite: (coin) => {
     const current = get().favorites;
-    set({ favorites: current.filter((f) => f.name !== coin.name) });
+    set({ favorites: current.filter((f) => f.id !== coin.id) });
   },
   toggleFavorite: (coin) => {
     const current = get().favorites;
-    if (current.some((f) => f.name === coin.name)) {
+    if (current.some((f) => f.id === coin.id)) {
       get().removeFavorite(coin);
     } else {
       get().addFavorite(coin);

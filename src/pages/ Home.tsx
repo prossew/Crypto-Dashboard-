@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { getCoins } from "../entities/coin/api";
 import type { CoinInterface } from "../entities/coin/api";
+import CoinList from "../widgets/CoinList";
 
 function Home() {
   const [coins, setCoins] = useState<CoinInterface[]>([]);
@@ -17,8 +18,8 @@ function Home() {
 
   if (loading) return <div>Loading...</div>;
   if (!coins.length) return <div>No coins found</div>;
-  
-  return <div>Home</div>;
+
+  return <CoinList coins={coins} />;
 }
 
 export default Home;
