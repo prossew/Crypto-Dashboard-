@@ -1,22 +1,29 @@
 import { Router } from "express";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
+import db from "../db";
 
 const router = Router();
-const users: any[] = [];
 
 router.post("/register", async (req, res) => {
   const { email, password } = req.body;
 
-  const existingUser = users.find((u) => u.email === email);
+  const existingUser = db
+    .prepare("SELECT * FROM users WHERE email = ?")
+    .get(email);
   if (existingUser) {
     return res.status(400).json({ message: "Пользователь уже существует" });
   }
 
   const hashedPassword = await bcrypt.hash(password, 10);
 
-  const user = { id: Date.now(), email, password: hashedPassword };
-  users.push(user);
+  db.prepare("INSERT INTO users (email, password) VALUES (?, ?)").run(
+    email,
+    hashedPassword,
+  );
+  const user = db
+    .prepare("SELECT * FROM users WHERE email = ?")
+    .get(email) as any;
 
   const token = jwt.sign({ id: user.id }, "SECRET_KEY");
   res.json({ token });
@@ -25,7 +32,9 @@ router.post("/register", async (req, res) => {
 router.post("/login", async (req, res) => {
   const { email, password } = req.body;
 
-  const findUser = users.find((u) => u.email === email);
+  const findUser = db
+    .prepare("SELECT * FROM users WHERE email = ?")
+    .get(email) as any;
   if (!findUser) {
     return res.status(400).json({ message: "Неверный email" });
   }
