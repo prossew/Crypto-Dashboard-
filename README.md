@@ -14,7 +14,7 @@ Crypto tracking app built with React + Node.js
 **Backend:** Node.js, Express, JWT, bcrypt, SQLite
 
 ## Live Demo
-- Frontend: [https://crypto-dashboard-jet.vercel.app/]
+- Frontend: https://crypto-dashboard-jet.vercel.app/
 - Backend: https://crypto-dashboard-pu7n.onrender.com
 
 ## Run locally
