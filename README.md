@@ -18,14 +18,15 @@ Crypto tracking app built with React + Node.js
 - Backend: https://crypto-dashboard-pu7n.onrender.com
 
 ## Run locally
-\`\`\`bash
+```bash
 # Frontend
 cd crypto-dashboard
 npm install
 npm run dev
-
+```
+```bash
 # Backend
 cd crypto-dashboard/server
 npm install
 npm run dev
-\`\`\`
+```
