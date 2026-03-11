@@ -1,7 +1,6 @@
 import axios from "axios";
 
 const API_KEY = "CG-r93bMRKb398kd4nkJ7aQVFB4";
-const headers = { "x-cg-demo-api-key": API_KEY };
 
 export interface CoinInterface {
   id: string;
@@ -20,8 +19,7 @@ export interface ChartData {
 export async function getCoins(): Promise<CoinInterface[]> {
   try {
     const response = await axios.get(
-      "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=50&page=1",
-      { headers }
+      `https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=50&page=1&x_cg_demo_api_key=${API_KEY}`,
     );
     return response.data;
   } catch (error) {
@@ -33,8 +31,7 @@ export async function getCoins(): Promise<CoinInterface[]> {
 export async function getCoinsbyId(id: string): Promise<any> {
   try {
     const response = await axios.get(
-      `https://api.coingecko.com/api/v3/coins/${id}`,
-      { headers }
+      `https://api.coingecko.com/api/v3/coins/${id}?x_cg_demo_api_key=${API_KEY}`,
     );
     return response.data;
   } catch (error) {
@@ -43,11 +40,13 @@ export async function getCoinsbyId(id: string): Promise<any> {
   }
 }
 
-export async function getCoinChart(id: string, days: number): Promise<ChartData> {
+export async function getCoinChart(
+  id: string,
+  days: number,
+): Promise<ChartData> {
   try {
     const response = await axios.get(
-      `https://api.coingecko.com/api/v3/coins/${id}/market_chart?vs_currency=usd&days=${days}`,
-      { headers }
+      `https://api.coingecko.com/api/v3/coins/${id}/market_chart?vs_currency=usd&days=${days}&x_cg_demo_api_key=${API_KEY}`,
     );
     return response.data;
   } catch (error) {
