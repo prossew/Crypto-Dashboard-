@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card } from "@/components/ui/card";
@@ -7,6 +8,7 @@ import axios from "axios";
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
   async function handleLogin() {
     try {
@@ -15,6 +17,7 @@ function Login() {
         password,
       });
       localStorage.setItem("token", response.data.token);
+      navigate("/");
     } catch (error) {
       console.log("Не получилось", error);
     }
@@ -38,7 +41,7 @@ function Login() {
         />
         <Button onClick={handleLogin} className="w-full">
           Войти
-        </Button>   
+        </Button>
       </Card>
     </div>
   );
