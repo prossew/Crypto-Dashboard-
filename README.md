@@ -5,7 +5,7 @@ Crypto tracking app built with React + Node.js
 ## Preview
 
 ![Crypto Dashboard](./public/preview.png)
-(./public/preview2.png)
+![Crypto Dashboard](./public/preview2.png)
 
 ## Features
 - Live prices for 50+ cryptocurrencies
