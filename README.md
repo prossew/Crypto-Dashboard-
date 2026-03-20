@@ -1,6 +1,8 @@
 # Crypto Dashboard
 
-Crypto tracking app built with React + Node.js
+Full-stack crypto tracking app with real-time prices, 
+interactive charts and JWT authentication.
+Built with React + TypeScript on the frontend, Node.js + SQLite on the backend
 
 ## Preview
 
@@ -15,12 +17,10 @@ Crypto tracking app built with React + Node.js
 
 ## Tech Stack
 **Frontend:** React, TypeScript, Zustand, lightweight-charts, shadcn/ui, Tailwind CSS
-
 **Backend:** Node.js, Express, JWT, bcrypt, SQLite
 
 ## Live Demo
 - Frontend: https://crypto-dashboard-jet.vercel.app/
-- Backend: https://crypto-dashboard-pu7n.onrender.com
 
 ## Run locally
 ```bash
